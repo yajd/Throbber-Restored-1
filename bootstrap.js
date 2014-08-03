@@ -465,7 +465,7 @@ var prefs = { //each key here must match the exact name the pref is saved in the
 					//var newuri = Services.io.newURI(newVal, null, null);
 					//var newValRep = 'file:///' + newuri.spec.replace(/\\/g, '/');
 					
-					var css = '#throbber-restored:not([loading]) { list-style-image: url("' + fileuri + '#' + Math.random() + '") !important; }';
+					var css = '#navigator-throbber:not([loading]) { list-style-image: url("' + fileuri + '#' + Math.random() + '") !important; }';
 					var newURIParam = {
 						aURL: 'data:text/css,' + encodeURIComponent(css),
 						aOriginCharset: null,
@@ -545,7 +545,7 @@ var prefs = { //each key here must match the exact name the pref is saved in the
 					//var newuri = Services.io.newURI(newVal, null, null);
 					//var newValRep = 'file:///' + newuri.spec.replace(/\\/g, '/');
 					
-					var css = '#throbber-restored[loading] { list-style-image: url("' + fileuri + '#' + Math.random() + '") !important; }';
+					var css = '#navigator-throbber[loading] { list-style-image: url("' + fileuri + '#' + Math.random() + '") !important; }';
 					var newURIParam = {
 						aURL: 'data:text/css,' + encodeURIComponent(css),
 						aOriginCharset: null,
