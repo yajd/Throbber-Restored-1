@@ -28,7 +28,7 @@ function winWorker(aDOMWindow) {
 	this.DOMWindow = aDOMWindow;
 	this.DOMDocument = this.DOMWindow.document;
 	this.gBrowser = this.DOMWindow.gBrowser;
-	this.gThrobber = this.DOMDocument.getElementById('throbber-restored');
+	this.gThrobber = this.DOMDocument.getElementById('navigator-throbber');
 	
 	
 	this.gMutationFunc = function(ms) {
@@ -256,7 +256,7 @@ var windowListener = {
 			return;
 		}
 		
-		/* var throbber = aDOMWindow.document.getElementById('throbber-restored');
+		/* var throbber = aDOMWindow.document.getElementById('navigator-throbber');
 		if (throbber) {
 			
 		} */
@@ -303,7 +303,7 @@ function startup(aData, aReason) {
 	}
 	
 	CustomizableUI.createWidget({ //must run createWidget before windowListener.register because the register function needs the button added first
-		id: 'throbber-restored',
+		id: 'navigator-throbber',
 		type: 'custom',
 		defaultArea: CustomizableUI.AREA_NAVBAR,
 		onBuild: function(aDocument) {
@@ -311,7 +311,7 @@ function startup(aData, aReason) {
 			var image = aDocument.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'image');
 			
 			var props = {
-				id: 'throbber-restored',
+				id: 'navigator-throbber',
 				title: 'Activity Indicator',
 				align: 'center',
 				pack: 'center',
@@ -322,9 +322,12 @@ function startup(aData, aReason) {
 			};
 			for (var p in props) {
 				toolbaritem.setAttribute(p, props[p]);
+				console.log('setting attr p:', p);
 			}
 			
+			console.log('about to append image');
 			toolbaritem.appendChild(image);
+			console.log('appended image now about to return');
 			return toolbaritem;
 		}
 	});
@@ -350,7 +353,7 @@ function shutdown(aData, aReason) {
 	console.log('s0');
 	windowListener.unregister();
 	console.log('s1');
-	CustomizableUI.destroyWidget('throbber-restored');
+	CustomizableUI.destroyWidget('navigator-throbber');
 	console.log('s2');
 	myServices.sss.unregisterSheet(cssUri, myServices.sss.USER_SHEET); //running htis last as i think its syncronus
 	console.log('s3');
